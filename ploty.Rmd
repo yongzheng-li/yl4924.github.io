@@ -1,0 +1,56 @@
+---
+title: "Problem 2"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+# Load the Package
+```{r}
+library(tidyverse)
+library(p8105.datasets)
+library(plotly)
+```
+
+I select NYC Restaurant Inspections to make the plot.
+
+# Load and clean the dataset 
+```{r}
+data("rest_inspec")
+
+rest_inspec <- 
+  rest_inspec %>% 
+  rename("borough" = "boro") %>%
+  select(dba, borough, cuisine_description, critical_flag, 
+         score, grade, inspection_date) %>%
+  separate(inspection_date, into = c("year", "month", "day"), sep = "-") %>% 
+  filter(borough == "QUEENS",
+         critical_flag == "Critical",
+         grade == "C") %>% 
+  drop_na() %>% 
+  distinct() 
+
+```
+
+
+
+
+
+# 1. Bar plot 
+```{r}
+rest_inspec %>% 
+  count(cuisine_description) %>% 
+  mutate(cuisine_description = fct_reorder(cuisine_description, n)) %>% 
+  plot_ly(x = ~cuisine_description, y = ~n, type = "bar") 
+```
+
+
+# 2. Line plot
+```{r}
+rest_inspec %>% 
+  count(year) %>% 
+  plot_ly(x = ~year, y = ~n, type = "scatter", mode = "lines")
+```
+
+
