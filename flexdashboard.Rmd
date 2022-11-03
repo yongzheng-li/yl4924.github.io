@@ -1,5 +1,5 @@
 ---
-title: "Ploty"
+title: "Problem 2 flexdashboard"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
@@ -13,27 +13,51 @@ library(p8105.datasets)
 library(plotly)
 ```
 
+```{r, include=FALSE}
+data("rest_inspec")
+
+rest_inspec <- 
+  rest_inspec %>% 
+  rename("borough" = "boro") %>%
+  select(dba, borough, cuisine_description, critical_flag, 
+         score, grade, inspection_date) %>%
+  separate(inspection_date, into = c("year", "month", "day"), sep = "-") %>% 
+  filter(borough == "QUEENS",
+         critical_flag == "Critical",
+         grade == "C") %>% 
+  drop_na() %>% 
+  distinct() 
+```
+
+
 Column {data-width=650}
 -----------------------------------------------------------------------
 
-### Chart A
+### Boxplot
 
 ```{r}
-
+rest_inspec %>%
+  mutate(cuisine_description = fct_reorder(cuisine_description, score)) %>% 
+  plot_ly(y = ~score, color = ~cuisine_description, type = "box", colors = "viridis")
 ```
 
 Column {data-width=350}
 -----------------------------------------------------------------------
 
-### Chart B
+### line Plot
 
 ```{r}
-
+rest_inspec %>% 
+  count(year) %>% 
+  plot_ly(x = ~year, y = ~n, type = "scatter", mode = "lines")
 ```
 
-### Chart C
+### Bar plot
 
 ```{r}
-
+rest_inspec %>% 
+  count(cuisine_description) %>% 
+  mutate(cuisine_description = fct_reorder(cuisine_description, n)) %>% 
+  plot_ly(x = ~cuisine_description, y = ~n, type = "bar")
 ```
 

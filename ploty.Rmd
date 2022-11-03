@@ -1,12 +1,12 @@
 ---
-title: "Problem 2"
+title: "Problem 2: Polty"
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
 
-# Load the Package
+## Load the Package
 ```{r}
 library(tidyverse)
 library(p8105.datasets)
@@ -15,7 +15,7 @@ library(plotly)
 
 I select NYC Restaurant Inspections to make the plot.
 
-# Load and clean the dataset 
+## Load and clean the dataset 
 ```{r}
 data("rest_inspec")
 
@@ -33,11 +33,10 @@ rest_inspec <-
 
 ```
 
+I selected restaurant from Queens, Critical_flag = "Critical" that most likely contribute foodborne illness, and lowest grade("C"). There were total `r nrow(rest_inspec)` of unique restaurants after filtering. The important varaibles were score, cuisine_description, year.
 
 
-
-
-# 1. Bar plot 
+## 1. Bar plot 
 ```{r}
 rest_inspec %>% 
   count(cuisine_description) %>% 
@@ -45,14 +44,24 @@ rest_inspec %>%
   plot_ly(x = ~cuisine_description, y = ~n, type = "bar") 
 ```
 
+From the bar plot, Chinese cuisine has the most number of critical flag among grade C restaurants in Queens.
 
-# 2. Line plot
+## 2. Line plot
 ```{r}
 rest_inspec %>% 
   count(year) %>% 
   plot_ly(x = ~year, y = ~n, type = "scatter", mode = "lines")
 ```
 
+for number of grade C restaurant that has critical flag in Queens, the line plot show a increasing trend from 2013 to 2015 and a decreasing trend from 2015 to 2017. 
 
+## 3. boxplot
 
+```{r}
+rest_inspec %>%
+  mutate(cuisine_description = fct_reorder(cuisine_description, score)) %>% 
+  plot_ly(y = ~score, color = ~cuisine_description, type = "box", colors = "viridis")
+```
+
+Paklstanl cusine has the lowest score in the inspection, Turkish cuisine has the highest score in the inspection. 
 
