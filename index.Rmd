@@ -1,12 +1,25 @@
 ---
-title: "My awesome website"
+title: "Yonghzheng Li's Personal website"
 output: 
   html_document:
     toc: true
     toc_float: true
 ---
 
-# This is Yongzheng's personal website
+
+![](https://www.sciencealert.com/images/2022/09/RareUnusuallyMushroomShapedDragonsbloodTree.jpg)
+
+Welcome to my personal website. I am Yongzheng Li, a second year biostatistic student at Columbia university. I am interest in data science and Machine learning. I am current learning R. This website is designed to express my academic and professional experience.
+
+my academic and professional experience:  [resume](resume.html)
+
+How to reach me on github:  [https://github.com/yongzheng-li](https://github.com/yongzheng-li)
+
+Link to HW4 assignment:  [https://github.com/yongzheng-li/yl4924.github.io](https://github.com/yongzheng-li/yl4924.github.io) 
+
+
+
+
 
 
 

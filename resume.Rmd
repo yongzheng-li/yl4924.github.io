@@ -1,0 +1,46 @@
+---
+title: "Resume"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+### EDUCATION
+
+#### Columbia University, Mailman school of Public Health
+Master of Public Health in Biostatistics / Certificate in Advance Epidemiology, GPA 3.867	May 2023  
+
+Relevant Coursework: Analysis of Categorical Data, Statistical computing with SAS, Applied Regression.
+
+#### University of Connecticut 
+
+Bachelor of Arts in Statistics, GPA 3.88	May 2021
+
+Relevant Coursework: Sampling Theory, Statistical Methods, Intro to Biostatistics, Statistical Computing, Nonparametric Methods.
+
+
+
+### Experience
+
+#### Modeling Benign vs. Malignant Thyroid Nodules	April 2021
+Reproduce logistic regression model from research article on differentiating between benign and malignant thyroid nodules.
+
++ Preprocessed data set by categorical feature transformation.
+
++ Evaluated model performance of classification using k-fold cross validation technique. Using sensitivity, specificity, AUC as criteria to assess the model.
+
++ Presented results to an audience of 30; received highly positive feedback.
+
+
+#### Predicting E-commerce On-time Delivery Probability                                                                     April 2021
+
++ Worked on E-Commerce Shipping Dataset from Kaggle to predict whether product shipment delivered on time or not.
+
++ Trained supervised machine learning models include Logistic regression, Random Forest, LDA.
+
++ Analyzed feature importance in Random Forest to identify top factors that influenced the results.
+
+
+
+
